@@ -1,0 +1,2 @@
+@import url(a.css);
+@import url(http://127.0.0.1:10010/b.css) only and (max-width: 320px);

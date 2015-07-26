@@ -1,0 +1,24 @@
+{
+  "name": "css-files",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "concat-stream": "^1.5.0",
+    "parse-import": "^2.0.0",
+    "strip-comments": "^0.3.2",
+    "superagent": "^1.2.0",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "express": "^4.13.1",
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
+  }
+}
