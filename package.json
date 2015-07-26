@@ -1,5 +1,5 @@
 {
-  "name": "css-imports",
+  "name": "cssimports",
   "version": "1.0.0",
   "description": "find all @import urls in the css file DEEPLY",
   "main": "index.js",
