@@ -1,13 +1,13 @@
 {
-  "name": "css-files",
+  "name": "css-imports",
   "version": "1.0.0",
-  "description": "",
+  "description": "find all @import urls in the css file DEEPLY",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "yuezk001@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "bluebird": "^2.9.34",
     "concat-stream": "^1.5.0",
