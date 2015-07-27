@@ -1,6 +1,6 @@
 {
   "name": "cssimports",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "find all @import urls in the css file DEEPLY",
   "keywords": [
     "css",
