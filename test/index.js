@@ -1,6 +1,6 @@
 var fs = require('fs');
 var Path = require('path');
-var cssimport = require('../');
+var cssimoprts = require('../');
 
 var should = require('should');
 var express = require('express');
@@ -8,10 +8,10 @@ var express = require('express');
 var expected = require('./expected');
 
 describe('css-imports', function () {
-    describe('cssimport(src, {deep: false})', function () {
+    describe('cssimoprts(src, {deep: false})', function () {
         it('should return all `@import` urls in the local file', function (done) {
             var path = Path.join(__dirname, 'fixtures/fs.css');
-            cssimport(path, {deep: false})
+            cssimoprts(path, {deep: false})
                 .then(function (results) {
                     results.should.eql(expected.noDeep.fs);
                     done();
@@ -20,7 +20,7 @@ describe('css-imports', function () {
 
         it('should return all `@imports` urls in the remote file', function (done) {
             createServer(function (server) {
-                cssimport('http://127.0.0.1:10010/remote.css', {deep: false})
+                cssimoprts('http://127.0.0.1:10010/remote.css', {deep: false})
                     .then(function (results) {
                         results.should.eql(expected.noDeep.remote);
 
@@ -31,10 +31,10 @@ describe('css-imports', function () {
         });
     });
 
-    describe('cssimport(src, {deep: true})', function () {
+    describe('cssimoprts(src, {deep: true})', function () {
         it('should return all `@import` urls deeply in the local file', function (done) {
             var path = Path.join(__dirname, 'fixtures/fs.css');
-            cssimport(path, {deep: true})
+            cssimoprts(path, {deep: true})
                 .then(function (results) {
                     results.should.eql(expected.deep.fs);
                     done();
@@ -43,13 +43,24 @@ describe('css-imports', function () {
 
         it('should return all `@import` urls deeply in the remote file', function (done) {
             createServer(function (server) {
-                cssimport('http://127.0.0.1:10010/remote.css', {deep: true})
+                cssimoprts('http://127.0.0.1:10010/remote.css', {deep: true})
                     .then(function (results) {
                         results.should.eql(expected.deep.remote);
                         server.close();
                         done();
                     });
             });
+        });
+    });
+
+    describe('cssimoprts(src, {deep: true, flatten: true})', function() {
+        it('should find all imports deeply and put them into a single array', function (done) {
+            var path = Path.join(__dirname, 'fixtures/fs.css');
+            cssimoprts(path, {deep: true, flatten: true})
+                .then(function (results) {
+                    results.should.eql(expected.flatten.fs);
+                    done();
+                });
         });
     });
 });

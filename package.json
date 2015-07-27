@@ -2,6 +2,11 @@
   "name": "cssimports",
   "version": "1.0.0",
   "description": "find all @import urls in the css file DEEPLY",
+  "keywords": [
+    "css",
+    "imports",
+    "url"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "mocha"

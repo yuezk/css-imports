@@ -14,7 +14,10 @@ module.exports = function (entry, options) {
     options = Object.create(options || {});
 
     if (options.deep) {
-        return getImportsDeeply({ absolutePath: entry });
+        return getImportsDeeply({ absolutePath: entry })
+            .then(function (imports) {
+                return options.flatten ? flattenImports(imports) : imports;
+            });
     }
     return getImports(entry);
 };
@@ -84,4 +87,25 @@ function getAbsolutePath(parentPath, path) {
     }
 
     return Path.resolve(Path.dirname(parentPath), path);
+}
+
+
+function flattenImports(imports) {
+    var hash = {};
+
+    function get(imports) {
+        var ret = [];
+        for (var i = 0; i < imports.length; i++) {
+            var item = imports[i];
+            if (!hash[item.absolutePath]) {
+                ret.push(item);
+                ret = ret.concat(get(item.imports));
+                hash[item.absolutePath] = true;
+            }
+        }
+
+        return ret;
+    }
+
+    return get(imports);
 }

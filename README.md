@@ -12,10 +12,13 @@ npm install --save cssimoprts
 ```javascript
 var cssimoprts = require('cssimoprts');
 
-cssimoprts('path/to/css/file'/*, { deep: true } */).then(function (imports) {
+cssimoprts('path/to/css/file'/*, { deep: true, flatten: true } */).then(function (imports) {
     console.log(imports);
 });
 ```
+
+You can specify the `option.deep` to `true` to get the imports deeply, specify the `option.flatten` to `true` to put all imports into a single array.
+
 
 ## Example
 
@@ -61,9 +64,6 @@ The imports would be as follow:
     }
 ]
 ```
-
-You can specify the `option.deep` to `true` to get the imports deeply.
-
 
 ## LICENSE
 
