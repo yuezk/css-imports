@@ -1,4 +1,4 @@
-# css-imports
+# cssimports[!travis badge](https://travis-ci.org/yuezk/cssimports.svg?branch=master)
 find all `@import` urls in the css file DEEPLY
 
 ## Install
